@@ -1,5 +1,5 @@
-# docker build --progress=plain --no-cache -t qrcode-barcode .
-# docker save -o qrcode-barcode.tar qrcode-barcode
+# docker build --progress=plain --no-cache -t kavehbc/qrcode-barcode .
+# docker save -o qrcode-barcode.tar kavehbc/qrcode-barcode
 # docker load --input qrcode-barcode.tar
 
 FROM continuumio/miniconda3 AS build
@@ -20,7 +20,7 @@ RUN conda install -c conda-forge conda-pack
 
 # Use conda-pack to create a standalone environment
 # in /venv:
-RUN conda-pack -n myenv -o /tmp/env.tar && \
+RUN conda-pack -n qr-barcode -o /tmp/env.tar && \
   mkdir /venv && cd /venv && tar xf /tmp/env.tar && \
   rm /tmp/env.tar
 

@@ -1,4 +1,4 @@
-name: ds-fc-orders
+name: qr-barcode
 channels:
   - defaults
   - conda-forge
