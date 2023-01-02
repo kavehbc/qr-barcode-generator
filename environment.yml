@@ -1,0 +1,12 @@
+name: ds-fc-orders
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - streamlit
+      - streamlit-option-menu
+      - qrcode
+      - python-barcode
