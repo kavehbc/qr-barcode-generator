@@ -17,7 +17,7 @@ streamlit run ./main.py
 ```
 
 ### Run on Docker
-This application is available on [Docker Hub](https://hub.docker.com/r/kavehbc/crypto-tools), and it can be run directly using:
+This application is available on [Docker Hub](https://hub.docker.com/r/kavehbc/qrcode-barcode), and it can be run directly using:
 
 ```bash
 docker run -p 80:8501 kavehbc/qrcode-barcode
