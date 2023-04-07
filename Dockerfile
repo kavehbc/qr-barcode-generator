@@ -13,7 +13,7 @@ WORKDIR /app
 COPY . .
 
 # Creating the environment
-RUN conda env create -f environment.yml
+RUN conda env create -f _environment.yml
 
 # Installing conda-pack
 RUN conda install -c conda-forge conda-pack

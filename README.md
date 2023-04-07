@@ -4,10 +4,10 @@ This is an Streamlit app to generate QR codes and Barcodes with different format
 ___
 ## Run
 In order to run this app, you need to install the dependencies first based on
-the `environment.yml` file.
+the `_environment.yml` file.
 
 ```bash
-conda env create -f environment.yml
+conda env create -f _environment.yml
 ```
 
 Once the dependencies are installed, run the dashboard using `streamlit`.
@@ -35,12 +35,12 @@ You can check its live demo here:
 [https://qrcode-barcode.streamlitapp.com/](https://qrcode-barcode.streamlitapp.com/)
 
 ___
-## Github Repo
-This project is open-source, and it is available on Github at [https://github.com/kavehbc/qr-barcode-generator](https://github.com/kavehbc/qr-barcode-generator).
+## GitHub Repo
+This project is open-source, and it is available on GitHub at [https://github.com/kavehbc/qr-barcode-generator](https://github.com/kavehbc/qr-barcode-generator).
 
 ## Developer(s)
 Kaveh Bakhtiyari - [Website](http://bakhtiyari.com) | [Medium](https://medium.com/@bakhtiyari)
-  | [LinkedIn](https://www.linkedin.com/in/bakhtiyari) | [Github](https://github.com/kavehbc)
+  | [LinkedIn](https://www.linkedin.com/in/bakhtiyari) | [GitHub](https://github.com/kavehbc)
 
 ## Contribution
 Feel free to join the open-source community and contribute to this repository.
