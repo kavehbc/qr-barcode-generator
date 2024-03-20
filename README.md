@@ -34,7 +34,11 @@ Once you run it, you can open it in your browser on [http://127.0.0.1](http://12
 You can check its live demo here:
 [https://qrcode-barcode.streamlitapp.com/](https://qrcode-barcode.streamlitapp.com/)
 
+## Screenshot
+![App Screenshot](screenshot/qrcode-barcode.png "App Screenshot")
+
 ___
+
 ## GitHub Repo
 This project is open-source, and it is available on GitHub at [https://github.com/kavehbc/qr-barcode-generator](https://github.com/kavehbc/qr-barcode-generator).
 
