@@ -32,7 +32,7 @@ Once you run it, you can open it in your browser on [http://127.0.0.1](http://12
 
 ### Live demo
 You can check its live demo here:
-[https://qrcode-barcode.streamlitapp.com/](https://qrcode-barcode.streamlitapp.com/)
+[https://qrcode-barcode.streamlit.app/](https://qrcode-barcode.streamlit.app/)
 
 ## Screenshot
 ![App Screenshot](screenshot/qrcode-barcode.png "App Screenshot")
