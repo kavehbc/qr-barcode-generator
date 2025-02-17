@@ -1,4 +1,4 @@
-streamlit==1.16.0
-streamlit-option-menu==0.3.2
-qrcode==7.3.1
-python-barcode==0.14.0
+streamlit>=1.16.0
+streamlit-option-menu>=0.3.2
+qrcode>=7.3.1
+python-barcode>=0.14.0
