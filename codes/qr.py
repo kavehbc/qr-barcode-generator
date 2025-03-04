@@ -9,13 +9,13 @@ from utils.color import hex_to_rgba, make_transparent
 from utils.logo import add_logo
 
 
-qr_styles = {"StyledPilQRModuleDrawer": StyledPilQRModuleDrawer,
-            "SquareModuleDrawer": SquareModuleDrawer,
-            "GappedSquareModuleDrawer": GappedSquareModuleDrawer,
-            "CircleModuleDrawer": CircleModuleDrawer, 
-            "RoundedModuleDrawer": RoundedModuleDrawer,
-            "VerticalBarsDrawer": VerticalBarsDrawer,
-            "HorizontalBarsDrawer": HorizontalBarsDrawer
+qr_styles = {"StyledPilQRModuleDrawer": StyledPilQRModuleDrawer(),
+            "SquareModuleDrawer": SquareModuleDrawer(),
+            "GappedSquareModuleDrawer": GappedSquareModuleDrawer(),
+            "CircleModuleDrawer": CircleModuleDrawer(), 
+            "RoundedModuleDrawer": RoundedModuleDrawer(),
+            "VerticalBarsDrawer": VerticalBarsDrawer(),
+            "HorizontalBarsDrawer": HorizontalBarsDrawer()
 }
 
 def main():
@@ -56,7 +56,7 @@ def main():
     qr.add_data(qr_data)
     qr.make(fit=True)
     img = qr.make_image(image_factory=StyledPilImage,
-                        module_drawer=qr_style(),
+                        module_drawer=qr_style,
                         fill_color=qr_fill_color,
                         back_color=qr_back_color).convert('RGBA')
     img = img.resize((qr_size, qr_size))
