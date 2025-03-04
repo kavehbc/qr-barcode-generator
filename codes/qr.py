@@ -9,7 +9,8 @@ from utils.color import hex_to_rgba, make_transparent
 from utils.logo import add_logo
 
 
-qr_styles = {"StyledPilQRModuleDrawer": StyledPilQRModuleDrawer,
+qr_styles = {
+            # "StyledPilQRModuleDrawer": StyledPilQRModuleDrawer,
             "SquareModuleDrawer": SquareModuleDrawer,
             "GappedSquareModuleDrawer": GappedSquareModuleDrawer,
             "CircleModuleDrawer": CircleModuleDrawer,
