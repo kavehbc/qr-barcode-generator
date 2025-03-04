@@ -37,7 +37,7 @@ def main():
         qr_box_size = col2.number_input("Box Size", value=10, step=1, min_value=1, max_value=50)
         qr_border_size = col3.number_input("Border Size", value=1, step=1, min_value=1, max_value=10)
         qr_style_name = col4.selectbox("Drawer Style", options=qr_styles.keys())
-        qr_style = qr_styles_name[qr_style_name]
+        qr_style = qr_styles[qr_style_name]
         col1, col2, col3 = st.columns(3)
         qr_fill_color = col1.color_picker("Fill Color", value='#000000')
         qr_back_color = col2.color_picker("Background Color", value='#FFFFFF')
