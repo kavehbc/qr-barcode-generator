@@ -3,7 +3,7 @@ import qrcode
 import io
 import qrcode.image.svg
 from qrcode.image.styledpil import StyledPilImage
-from qrcode.image.styles.moduledrawers.pil import RoundedModuleDrawer
+from qrcode.image.styles.moduledrawers.pil import GappedSquareModuleDrawer
 from utils.data_types import data_types, qr_fields
 from utils.color import hex_to_rgba, make_transparent
 from utils.logo import add_logo
@@ -46,7 +46,7 @@ def main():
     qr.add_data(qr_data)
     qr.make(fit=True)
     img = qr.make_image(image_factory=StyledPilImage,
-                        module_drawer=RoundedModuleDrawer(),
+                        module_drawer=GappedSquareModuleDrawer(),
                         fill_color=qr_fill_color,
                         back_color=qr_back_color).convert('RGBA')
     img = img.resize((qr_size, qr_size))
