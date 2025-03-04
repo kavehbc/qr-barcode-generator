@@ -9,14 +9,12 @@ from utils.color import hex_to_rgba, make_transparent
 from utils.logo import add_logo
 
 
-qr_styles = {
-            # "StyledPilQRModuleDrawer": StyledPilQRModuleDrawer,
-            "SquareModuleDrawer": SquareModuleDrawer,
-            "GappedSquareModuleDrawer": GappedSquareModuleDrawer,
-            "CircleModuleDrawer": CircleModuleDrawer,
-            "RoundedModuleDrawer": RoundedModuleDrawer,
-            "VerticalBarsDrawer": VerticalBarsDrawer,
-            "HorizontalBarsDrawer": HorizontalBarsDrawer
+qr_styles = {"Square": SquareModuleDrawer,
+            "Gapped Square": GappedSquareModuleDrawer,
+            "Circle": CircleModuleDrawer,
+            "Rounded": RoundedModuleDrawer,
+            "Vertical Bars": VerticalBarsDrawer,
+            "Horizontal Bars": HorizontalBarsDrawer
         }
 
 def main():
