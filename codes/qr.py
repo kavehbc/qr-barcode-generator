@@ -56,7 +56,7 @@ def main():
     qr.add_data(qr_data)
     qr.make(fit=True)
     img = qr.make_image(image_factory=StyledPilImage,
-                        module_drawer=qr_style,
+                        module_drawer=qr_style(),
                         fill_color=qr_fill_color,
                         back_color=qr_back_color).convert('RGBA')
     img = img.resize((qr_size, qr_size))
