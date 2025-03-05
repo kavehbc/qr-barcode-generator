@@ -31,12 +31,18 @@ def main():
 
     with st.expander("Advanced Parameters"):
         qr_data = st.text_area("QR Data", qr_data_replaced, height=250)
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3 = st.columns(3)
         qr_size = col1.number_input("Size", value=500, step=1, min_value=50)
         qr_box_size = col2.number_input("Box Size", value=10, step=1, min_value=1, max_value=50)
         qr_border_size = col3.number_input("Border Size", value=1, step=1, min_value=1, max_value=10)
-        qr_style_name = col4.selectbox("Drawer Style", options=qr_styles.keys())
-        qr_style = qr_styles[qr_style_name]
+        
+        col1, col2 = st.columns(2)
+        qr_eye_style_name = col1.selectbox("Eye Drawer", options=qr_styles.keys())
+        qr_module_style_name = col2.selectbox("Module Drawer", options=qr_styles.keys())
+
+        qr_eye_style = qr_styles[qr_eye_style_name]
+        qr_module_style = qr_styles[qr_module_style_name]
+
         col1, col2, col3 = st.columns(3)
         qr_fill_color = col1.color_picker("Fill Color", value='#000000')
         qr_back_color = col2.color_picker("Background Color", value='#FFFFFF')
@@ -55,7 +61,8 @@ def main():
     qr.add_data(qr_data)
     qr.make(fit=True)
     img = qr.make_image(image_factory=StyledPilImage,
-                        module_drawer=qr_style(),
+                        module_drawer=qr_module_style(),
+                        eye_drawer=qr_eye_style(),
                         fill_color=qr_fill_color,
                         back_color=qr_back_color).convert('RGBA')
     img = img.resize((qr_size, qr_size))
