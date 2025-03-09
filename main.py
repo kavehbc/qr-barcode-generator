@@ -21,7 +21,7 @@ if __name__ == '__main__':
                            'About': """
                                # QR Code and Barcode Generator
 
-                               Version 2.0 - Kaveh Bakhtiyari
+                               Version 2.1 - Kaveh Bakhtiyari
                                """
                        }
                        )

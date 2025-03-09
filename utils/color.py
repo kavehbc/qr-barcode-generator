@@ -19,3 +19,15 @@ def make_transparent(img, opaque_pixel, transparent_pixel):
             new_pixels.append(opaque_pixel)
     img.putdata(new_pixels)
     return img
+
+def make_image(img, fill_color, back_color):
+    # invert colors and set alpha color
+    img_data = img.getdata()
+    new_pixels = []
+    for item in img_data:
+        if item[0] == 255 and item[1] == 255 and item[2] == 255:  # if white pixel
+            new_pixels.append(back_color)
+        else:
+            new_pixels.append(fill_color)
+    img.putdata(new_pixels)
+    return img

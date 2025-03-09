@@ -6,11 +6,13 @@ from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers.pil import StyledPilQRModuleDrawer, SquareModuleDrawer, GappedSquareModuleDrawer, CircleModuleDrawer, RoundedModuleDrawer, VerticalBarsDrawer, HorizontalBarsDrawer
 from utils.qr_styles import StarModuleDrawer, StyledPilImage2, TriRoundedRectangle
 from utils.data_types import data_types, qr_fields
-from utils.color import hex_to_rgba, make_transparent
+from utils.color import hex_to_rgba, make_image, make_transparent
 from utils.logo import add_logo
 
 
-qr_styles = {"Square": SquareModuleDrawer,
+qr_styles = {
+            "Default": StyledPilQRModuleDrawer,
+            "Square": SquareModuleDrawer,
             "Gapped Square": GappedSquareModuleDrawer,
             "Circle": CircleModuleDrawer,
             "Rounded": RoundedModuleDrawer,
@@ -19,7 +21,9 @@ qr_styles = {"Square": SquareModuleDrawer,
             "Star": StarModuleDrawer
         }
 
-eye_styles = {"Square": SquareModuleDrawer,
+eye_styles = {
+            "Default": StyledPilQRModuleDrawer,
+            "Square": SquareModuleDrawer,
             "Gapped Square": GappedSquareModuleDrawer,
             "Circle": CircleModuleDrawer,
             "Rounded": RoundedModuleDrawer,
@@ -81,13 +85,25 @@ def main():
 
     qr.add_data(qr_data)
     qr.make(fit=True)
-    img = qr.make_image(image_factory=StyledPilImage2,
-                        module_drawer=qr_module_style(),
-                        eye_drawer=qr_eye_style(),
-                        fill_color=qr_fill_color,
-                        back_color=qr_back_color).convert('RGBA')
+
+    qr_params = {"fill_color": qr_fill_color,
+                 "back_color": qr_back_color}
+    
+    if qr_eye_style_name != "Default":
+        qr_params["image_factory"] = StyledPilImage2
+        qr_params["eye_drawer"] = qr_eye_style()
+    if qr_module_style_name != "Default":
+        qr_params["image_factory"] = StyledPilImage2
+        qr_params["module_drawer"] = qr_module_style()
+
+    img = qr.make_image(**qr_params).convert('RGBA')
     img = img.resize((qr_size, qr_size))
 
+    # set the color in case image_factory is set to StypedPilImage2
+    fill_color = hex_to_rgba(qr_fill_color, 255)
+    back_color = hex_to_rgba(qr_back_color, 255)
+    img = make_image(img, fill_color, back_color)
+    
     # logo file
     uploaded_logo = st.sidebar.file_uploader("Logo", accept_multiple_files=False, type=['png', 'jpg'])
     if uploaded_logo is not None:
