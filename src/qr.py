@@ -4,6 +4,7 @@ import io
 import qrcode.image.svg
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers.pil import StyledPilQRModuleDrawer, SquareModuleDrawer, GappedSquareModuleDrawer, CircleModuleDrawer, RoundedModuleDrawer, VerticalBarsDrawer, HorizontalBarsDrawer
+from utils.qr_styles import StarModuleDrawer, StyledPilImage2, TriRoundedRectangle
 from utils.data_types import data_types, qr_fields
 from utils.color import hex_to_rgba, make_transparent
 from utils.logo import add_logo
@@ -14,8 +15,26 @@ qr_styles = {"Square": SquareModuleDrawer,
             "Circle": CircleModuleDrawer,
             "Rounded": RoundedModuleDrawer,
             "Vertical Bars": VerticalBarsDrawer,
-            "Horizontal Bars": HorizontalBarsDrawer
+            "Horizontal Bars": HorizontalBarsDrawer,
+            "Star": StarModuleDrawer
         }
+
+eye_styles = {"Square": SquareModuleDrawer,
+            "Gapped Square": GappedSquareModuleDrawer,
+            "Circle": CircleModuleDrawer,
+            "Rounded": RoundedModuleDrawer,
+            "Vertical Bars": VerticalBarsDrawer,
+            "Horizontal Bars": HorizontalBarsDrawer,
+            "Star": StarModuleDrawer,
+            "Tri-Rounded Rectangle": TriRoundedRectangle,
+        }
+
+error_correction = {
+    "7% (L)": qrcode.constants.ERROR_CORRECT_L,
+    "15% (M)": qrcode.constants.ERROR_CORRECT_M,
+    "25% (Q)": qrcode.constants.ERROR_CORRECT_Q,
+    "30% (H)": qrcode.constants.ERROR_CORRECT_H
+}
 
 def main():
     st.title("QR Code")
@@ -36,12 +55,14 @@ def main():
         qr_box_size = col2.number_input("Box Size", value=10, step=1, min_value=1, max_value=50)
         qr_border_size = col3.number_input("Border Size", value=1, step=1, min_value=1, max_value=10)
         
-        col1, col2 = st.columns(2)
-        qr_eye_style_name = col1.selectbox("Eye Drawer", options=qr_styles.keys())
+        col1, col2, col3 = st.columns(3)
+        qr_eye_style_name = col1.selectbox("Eye Drawer", options=eye_styles.keys())
         qr_module_style_name = col2.selectbox("Module Drawer", options=qr_styles.keys())
+        qr_error_correction = col3.selectbox("Error Correction", options=error_correction.keys(), index=3)
 
-        qr_eye_style = qr_styles[qr_eye_style_name]
+        qr_eye_style = eye_styles[qr_eye_style_name]
         qr_module_style = qr_styles[qr_module_style_name]
+        qr_error_correction = error_correction[qr_error_correction]
 
         col1, col2, col3 = st.columns(3)
         qr_fill_color = col1.color_picker("Fill Color", value='#000000')
@@ -53,14 +74,14 @@ def main():
 
     qr = qrcode.QRCode(
         version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_H,
+        error_correction=qr_error_correction,
         box_size=qr_box_size,
         border=qr_border_size,
     )
 
     qr.add_data(qr_data)
     qr.make(fit=True)
-    img = qr.make_image(image_factory=StyledPilImage,
+    img = qr.make_image(image_factory=StyledPilImage2,
                         module_drawer=qr_module_style(),
                         eye_drawer=qr_eye_style(),
                         fill_color=qr_fill_color,

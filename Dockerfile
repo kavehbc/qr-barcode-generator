@@ -32,7 +32,7 @@ RUN /venv/bin/conda-unpack
 
 # The runtime-stage image
 FROM debian:buster AS runtime
-LABEL version="1.0.0"
+LABEL version="2.0.0"
 LABEL maintainer="Kaveh Bakhtiyari"
 LABEL url="http://bakhtiyari.com"
 LABEL vcs-url="https://github.com/kavehbc/qr-barcode-generator"

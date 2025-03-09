@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from codes import qr, bar_code
+from src import qr, bar_code
 
 
 def main():
@@ -21,7 +21,7 @@ if __name__ == '__main__':
                            'About': """
                                # QR Code and Barcode Generator
 
-                               Version 1.0 - Kaveh Bakhtiyari
+                               Version 2.0 - Kaveh Bakhtiyari
                                """
                        }
                        )
